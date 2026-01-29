@@ -3,6 +3,7 @@ const mongoClient = require('mongodb').MongoClient;
 
 let database;
  
+// Initialize the DB
 const initDb = (callback) => {
     if (database) {
         console.log('DB already initialized!');
@@ -18,6 +19,7 @@ const initDb = (callback) => {
         });
 };
 
+// If no DB then throw the error
 const getDatabase = () => {
     if (!database) {
         throw Error('Database not initialized.');

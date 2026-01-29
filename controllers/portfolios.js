@@ -2,6 +2,7 @@ const { application, json } = require('express');
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
+// Open the database and return all of the json
 const getAll = async (req, res) => {
     const result = await mongodb.getDatabase().db().collection('portfolios').find();
     result.toArray().then((portfolios) => {
@@ -10,6 +11,7 @@ const getAll = async (req, res) => {
     });
 };
 
+// Open the database and return a single json
 const getSingle = async (req, res) => {
     const portfolioId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('portfolios').find({ _id: portfolioId });
